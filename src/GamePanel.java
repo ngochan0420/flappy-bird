@@ -16,22 +16,22 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
- int width = 600;
- int height = 800;
+ int width = 360;
+ int height = 640;
  
  BufferedImage bg;
  BufferedImage birdImg;
  BufferedImage pipeTop;
  BufferedImage pipeBottom;
  
- int birdX = 120;
- int birdY = 200;
+ int birdX = 70;
+ int birdY = 160;
  int velocity = 0;
  
- int PipeX = 600;
- int pipeWidth = 80;
-int pipeGap =150;
-int pipeTopHeight = 180;
+ int PipeX = width ;
+ int pipeWidth = 50;
+int pipeGap =120;
+int pipeTopHeight = 140;
 
 int score = 0;
 
@@ -67,7 +67,7 @@ int score = 0;
         g.drawImage(bg, 0, 0, width, height, null);
 
         
-        g.drawImage(birdImg, birdX, birdY, 50, 50, null);
+        g.drawImage(birdImg, birdX, birdY, 30, 30, null);
 
 
         g.drawImage(pipeTop, PipeX, 0, pipeWidth, pipeTopHeight, null);
@@ -92,13 +92,13 @@ int score = 0;
 public void actionPerformed(ActionEvent e) {
 
       
-        velocity += 1;
+        velocity += 0.8;
 
         birdY += velocity;
 
       
 
-        PipeX -= 5;
+        PipeX -= 3;
 
         if (PipeX < -pipeWidth) {
 
@@ -116,7 +116,7 @@ public void actionPerformed(ActionEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 
-            velocity = -12;
+            velocity = -9;
 
         }
 
