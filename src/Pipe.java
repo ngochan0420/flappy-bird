@@ -2,27 +2,32 @@ import java.awt.*;
 import java.util.Random;
 
 public class Pipe {
+    int x;
+    int width = 64;
+    int speed = 4;
 
-    private int x;
-    private int width = 60;
-    private int gap = 150;
-    private int topHeight;
-    private int panelHeight;
-    private int speed = 4;
+    int gap = 150; 
+    int topHeight;
 
-    private Image topImg;
-    private Image bottomImg;
+    Image topImg;
+    Image bottomImg;
 
-    private Random rand = new Random();
+    int boardHeight;
 
-    public Pipe(int startX, int panelHeight, Image topImg, Image bottomImg) {
+    Random rand = new Random();
+
+    public Pipe(int startX, int boardHeight, Image topImg, Image bottomImg) {
         this.x = startX;
-        this.panelHeight = panelHeight;
+        this.boardHeight = boardHeight;
         this.topImg = topImg;
         this.bottomImg = bottomImg;
 
+        randomHeight();
+    }
+
+    public void randomHeight() {
         int min = 50;
-        int max = panelHeight - gap - 50;
+        int max = boardHeight - gap - 50;
         topHeight = rand.nextInt(max - min) + min;
     }
 
@@ -34,8 +39,7 @@ public class Pipe {
         g.drawImage(topImg, x, 0, width, topHeight, null);
 
         int bottomY = topHeight + gap;
-        int bottomHeight = panelHeight - bottomY;
-
+        int bottomHeight = boardHeight - bottomY;
         g.drawImage(bottomImg, x, bottomY, width, bottomHeight, null);
     }
 
