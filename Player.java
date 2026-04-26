@@ -9,20 +9,28 @@ public class Player {
     double g = 0.5;
     double j = -8;
 
-    public void move() {
-        v = v+g;
-        y = y+v;
+    int boardHeight = 640;
 
-        if (y<0)
-            y=0;
+    public void move() {
+        v = v + g;
+        y = y + v;
+        if (y < 0) y = 0;
+    }
+
+    public void update() {
+        move();
     }
 
     public void flap() {
         v = j;
     }
 
+    public boolean isOnGround() {
+        return y + height >= boardHeight;
+    }
+
     public Rectangle getBounds() {
-        return new Rectangle(x , (int) y, width, height);
+        return new Rectangle(x, (int) y, width, height);
     }
 
     public void reset() {
