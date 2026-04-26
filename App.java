@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 import javax.swing.JFrame;
 
 public class App {
@@ -8,7 +6,6 @@ public class App {
         int boardHeight = 640;
 
         JFrame frame = new JFrame("Flappy Bird");
-        frame.setVisible(true);
         frame.setSize(boardWidth, boardHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -16,5 +13,8 @@ public class App {
 
         GamePanel panel = new GamePanel();
         frame.add(panel);
+        frame.pack();
+        panel.requestFocus();
+        frame.setVisible(true);
     }
 }
